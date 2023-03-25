@@ -24,6 +24,37 @@ public final class SourceGraph {
     private var allDeclarationsByKind: [Declaration.Kind: Set<Declaration>] = [:]
     private var allExplicitDeclarationsByUsr: [String: Declaration] = [:]
 
+    private(set) var indexedModules: Set<String> = []
+    private(set) var unusedModuleImports: Set<Declaration> = []
+    private var exportedModules: [String: Set<String>] = [:]
+
+    func addIndexedModule(_ module: String) {
+        withLock {
+            _ = indexedModules.insert(module)
+        }
+    }
+
+    func addExportedModule(_ module: String, exportedBy exportingModules: Set<String>) {
+        withLock {
+            exportedModules[module, default: []].formUnion(exportingModules)
+        }
+    }
+
+    func isModule(_ module: String, exportedBy exportingModule: String) -> Bool {
+        withLock {
+            exportedModules[module, default: []].contains(exportingModule)
+        }
+    }
+
+    func markUnusedModuleImport(_ statement: ImportStatement) {
+        withLock {
+            let usr = "\(statement.location.description)-\(statement.module)"
+            let decl = Declaration(kind: .module, usrs: [usr], location: statement.location)
+            decl.name = statement.module
+            unusedModuleImports.insert(decl)
+        }
+    }
+
     private let lock = UnfairLock()
 
     public var unusedDeclarations: Set<Declaration> {
@@ -170,9 +201,9 @@ public final class SourceGraph {
             } else {
                 _ = declaration.references.insert(reference)
             }
-        }
 
-        add(reference)
+            addUnsafe(reference)
+        }
     }
 
     func remove(_ reference: Reference) {

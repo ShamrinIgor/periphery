@@ -1,6 +1,4 @@
 import Foundation
-import PeripheryKit
-import Shared
 
 final class XcodeScheme {
     let project: XcodeProjectlike

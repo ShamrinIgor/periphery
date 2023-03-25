@@ -1,5 +1,4 @@
 import Foundation
-import Shared
 import PeripheryKit
 
 final class CsvFormatter: OutputFormatter {

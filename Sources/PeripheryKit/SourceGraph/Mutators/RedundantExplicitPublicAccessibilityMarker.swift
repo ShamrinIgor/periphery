@@ -122,8 +122,8 @@ final class RedundantExplicitPublicAccessibilityMarker: SourceGraphMutator {
         let referenceFiles = Set(graph.references(to: decl).map { $0.location.file })
 
         let referenceModules = referenceFiles.flatMap { file -> Set<String> in
-            let importsDeclModuleTestable = file.importStatements.contains(where: { (parts, isTestable) in
-                isTestable && !Set(parts).isDisjoint(with: decl.location.file.modules)
+            let importsDeclModuleTestable = file.importStatements.contains(where: {
+                $0.isTestable && decl.location.file.modules.contains($0.module)
             })
 
             if !importsDeclModuleTestable {

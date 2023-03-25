@@ -7,6 +7,9 @@ public final class SourceGraphMutatorRunner {
     }
 
     private let mutators: [SourceGraphMutator.Type] = [
+        // TODO: Why first?
+        UnusedImportMarker.self,
+
         // Must come before ExtensionReferenceBuilder.
         AccessibilityCascader.self,
         ObjCAccessibleRetainer.self,
@@ -47,7 +50,7 @@ public final class SourceGraphMutatorRunner {
         AssignOnlyPropertyReferenceEliminator.self,
 
         UsedDeclarationMarker.self,
-        RedundantProtocolMarker.self
+        RedundantProtocolMarker.self,
     ]
 
     private let graph: SourceGraph

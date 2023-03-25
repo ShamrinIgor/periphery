@@ -79,12 +79,12 @@ public final class SwiftIndexer: Indexer {
                         let targets = try Set(units.compactMap { try indexStore.target(for: $0.1) })
                         throw PeripheryError.conflictingIndexUnitsError(file: file, module: name, unitTargets: targets)
                     }
+                    graph.addIndexedModule(name)
                 }
             }
-            let sourceFile = SourceFile(path: file, modules: modules)
 
             return Job(
-                file: sourceFile,
+                file: .init(path: file, modules: modules),
                 units: units,
                 graph: graph,
                 logger: logger,
@@ -254,6 +254,13 @@ public final class SwiftIndexer: Indexer {
             multiplexingSyntaxVisitor.visit()
 
             file.importStatements = importSyntaxVisitor.importStatements
+
+            file.importStatements
+                .forEach {
+                    if $0.isExported {
+                        graph.addExportedModule($0.module, exportedBy: file.modules)
+                    }
+                }
 
             associateLatentReferences()
             associateDanglingReferences()

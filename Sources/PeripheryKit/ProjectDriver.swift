@@ -1,4 +1,5 @@
 import Foundation
+import Shared
 
 public protocol ProjectDriver {
     static func build() throws -> Self

@@ -127,6 +127,8 @@ public final class Declaration {
 
         public var displayName: String? {
             switch self {
+            case .module:
+                return "module"
             case .class:
                 return "class"
             case .protocol:

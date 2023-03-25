@@ -7,7 +7,9 @@ public struct ScanResultBuilder {
         let interval = logger.beginInterval("scan:result:build")
 
         let assignOnlyProperties = graph.assignOnlyProperties
-        let removableDeclarations = graph.unusedDeclarations.subtracting(assignOnlyProperties)
+        let removableDeclarations = graph.unusedDeclarations
+            .subtracting(assignOnlyProperties)
+            .union(graph.unusedModuleImports)
         let redundantProtocols = graph.redundantProtocols.filter { !removableDeclarations.contains($0.0) }
         let redundantPublicAccessibility = graph.redundantPublicAccessibility.filter { !removableDeclarations.contains($0.0) }
 
