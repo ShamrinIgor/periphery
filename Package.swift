@@ -154,7 +154,7 @@ targets.append(contentsOf: [
 
 let package = Package(
     name: "Periphery",
-    platforms: [.macOS(.v13)],
+    platforms: [.macOS(.v12)],
     products: [
         .library(name: "Periphery", targets: ["PeripheryKit", "PeripheryShared"]),
     ],
