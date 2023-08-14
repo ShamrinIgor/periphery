@@ -1,7 +1,7 @@
 import Foundation
 import SystemPackage
 import AEXML
-import Shared
+import PeripheryShared
 
 final class InfoPlistParser {
     private static let elements = ["UISceneClassName", "UISceneDelegateClassName", "NSExtensionPrincipalClass"]

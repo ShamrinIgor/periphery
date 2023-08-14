@@ -21,7 +21,7 @@ dependencies.append(
 #endif
 
 var frontendDependencies: [PackageDescription.Target.Dependency] = [
-    .target(name: "Shared"),
+    .target(name: "PeripheryShared"),
     .target(name: "PeripheryKit"),
     .product(name: "ArgumentParser", package: "swift-argument-parser"),
     .product(name: "FilenameMatcher", package: "swift-filename-matcher")
@@ -36,20 +36,10 @@ var targets: [PackageDescription.Target] = [
         name: "Frontend",
         dependencies: frontendDependencies
     ),
-    .plugin(
-        name: "PeripheryCommandPlugin",
-        capability: .command(
-            intent: .custom(verb: "periphery", description: "Detect unused code"),
-            permissions: []
-        ),
-        dependencies: [
-            .target(name: "PeripheryBinary", condition: .when(platforms: [.macOS])),
-        ]
-    ),
     .target(
         name: "PeripheryKit",
         dependencies: [
-            .target(name: "Shared"),
+            .target(name: "PeripheryShared"),
             .product(name: "SystemPackage", package: "swift-system"),
             .product(name: "AEXML", package: "AEXML"),
             .product(name: "SwiftSyntax", package: "swift-syntax"),
@@ -59,7 +49,7 @@ var targets: [PackageDescription.Target] = [
         ]
     ),
     .target(
-        name: "Shared",
+        name: "PeripheryShared",
         dependencies: [
             .product(name: "Yams", package: "Yams"),
             .product(name: "SystemPackage", package: "swift-system"),
@@ -130,11 +120,6 @@ var targets: [PackageDescription.Target] = [
         ],
         exclude: ["AccessibilityProject"]
     ),
-   .binaryTarget(
-       name: "PeripheryBinary",
-       url: "https://github.com/peripheryapp/Periphery/releases/download/2.14.0/periphery-2.14.0-macos.artifactbundle.zip",
-       checksum: "c45678908c7ff793d72f63f1dd5736847962c2e16fb60598feb822d26ef08d7f"
-   ),
 ]
 
 #if os(macOS)
@@ -142,7 +127,7 @@ targets.append(contentsOf: [
     .target(
         name: "XcodeSupport",
         dependencies: [
-            .target(name: "Shared"),
+            .target(name: "PeripheryShared"),
             .target(name: "PeripheryKit"),
             .product(name: "XcodeProj", package: "XcodeProj"),
         ]
@@ -169,10 +154,9 @@ targets.append(contentsOf: [
 
 let package = Package(
     name: "Periphery",
-    platforms: [.macOS(.v12)],
+    platforms: [.macOS(.v13)],
     products: [
-        .executable(name: "periphery", targets: ["Frontend"]),
-        .plugin(name: "PeripheryCommandPlugin", targets: ["PeripheryCommandPlugin"]),
+        .library(name: "Periphery", targets: ["PeripheryKit", "PeripheryShared"]),
     ],
     dependencies: dependencies,
     targets: targets,

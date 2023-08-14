@@ -1,4 +1,4 @@
-import Shared
+import PeripheryShared
 
 final class RedundantExplicitPublicAccessibilityMarker: SourceGraphMutator {
     private let graph: SourceGraph

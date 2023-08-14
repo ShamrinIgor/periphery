@@ -1,7 +1,7 @@
 import Foundation
 import AEXML
 import SystemPackage
-import Shared
+import PeripheryShared
 
 final class XibParser {
     private let path: FilePath

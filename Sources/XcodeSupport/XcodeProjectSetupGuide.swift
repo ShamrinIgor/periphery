@@ -1,6 +1,6 @@
 import Foundation
 import SystemPackage
-import Shared
+import PeripheryShared
 
 public final class XcodeProjectSetupGuide: SetupGuideHelpers, ProjectSetupGuide {
     private let configuration: Configuration

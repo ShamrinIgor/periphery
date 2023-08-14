@@ -1,6 +1,6 @@
 import Foundation
 import SwiftSyntax
-import Shared
+import PeripheryShared
 
 struct TypeNameSourceLocation: Hashable {
     let name: String

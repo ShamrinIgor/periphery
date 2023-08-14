@@ -1,5 +1,5 @@
 import Foundation
-import Shared
+import PeripheryShared
 
 /// Workaround for https://github.com/apple/swift/issues/61509.
 final class LetShorthandPropertyReferenceBuilder: SourceGraphMutator {

@@ -1,7 +1,7 @@
 import Foundation
 import SystemPackage
 import PeripheryKit
-import Shared
+import PeripheryShared
 
 public final class Xcodebuild {
     private let shell: Shell

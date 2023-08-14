@@ -1,5 +1,5 @@
 import XCTest
-@testable import Shared
+@testable import PeripheryShared
 
 final class ShellTest: XCTestCase {
     func testPristineEnvironmentWithPreservedVariables() {

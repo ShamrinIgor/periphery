@@ -90,14 +90,14 @@ open class Shell {
     }()
 
     @discardableResult
-    open func exec(_ args: [String], stderr: Bool = true) throws -> String {
+    open func exec(_ args: [String], stderr: Bool = true, currentDir: URL? = nil) throws -> String {
         let env = pristineEnvironment
-        return try exec(args, stderr: stderr, environment: env)
+        return try exec(args, stderr: stderr, environment: env, currentDir: currentDir)
     }
 
     // MARK: - Private
 
-    private func exec(_ args: [String], stderr: Bool, environment: [String: String]) throws -> String {
+    private func exec(_ args: [String], stderr: Bool, environment: [String: String], currentDir: URL? = nil) throws -> String {
         let launchPath: String
         let newArgs: [String]
 
@@ -113,6 +113,9 @@ open class Shell {
         task.launchPath = launchPath
         task.environment = environment
         task.arguments = newArgs
+        if let currentDir = currentDir {
+            task.currentDirectoryURL = currentDir
+        }
 
         let pipe = Pipe()
         task.standardOutput = pipe

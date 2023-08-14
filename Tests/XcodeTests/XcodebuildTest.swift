@@ -1,6 +1,6 @@
 import Foundation
 import XCTest
-import Shared
+import PeripheryShared
 @testable import XcodeSupport
 @testable import PeripheryKit
 

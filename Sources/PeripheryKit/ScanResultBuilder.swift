@@ -1,5 +1,5 @@
 import Foundation
-import Shared
+import PeripheryShared
 
 public struct ScanResultBuilder {
     public static func build(for graph: SourceGraph) -> [ScanResult] {

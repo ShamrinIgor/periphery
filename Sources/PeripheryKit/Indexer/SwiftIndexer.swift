@@ -2,7 +2,7 @@ import Foundation
 import SwiftSyntax
 import SwiftIndexStore
 import SystemPackage
-import Shared
+import PeripheryShared
 
 public final class SwiftIndexer: Indexer {
     private let sourceFiles: [FilePath: Set<String>]

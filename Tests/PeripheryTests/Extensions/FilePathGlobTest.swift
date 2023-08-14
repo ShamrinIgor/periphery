@@ -1,6 +1,6 @@
 import XCTest
 import SystemPackage
-import Shared
+import PeripheryShared
 
 class FilePathGlobTest : XCTestCase {
     private let files = ["foo", "bar", "baz", "dir1/file1.ext", "dir1/dir2/dir3/file2.ext"]

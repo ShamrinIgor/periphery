@@ -1,5 +1,5 @@
 import Foundation
-import Shared
+import PeripheryShared
 
 /// Retains all @MainActor annotated types and their initializers to workaround a Swift bug present
 /// in version 5.7.

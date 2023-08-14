@@ -1,5 +1,5 @@
 import Foundation
-import Shared
+import PeripheryShared
 import PeripheryKit
 
 final class JsonFormatter: OutputFormatter {

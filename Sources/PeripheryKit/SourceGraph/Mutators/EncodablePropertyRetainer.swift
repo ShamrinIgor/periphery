@@ -1,5 +1,5 @@
 import Foundation
-import Shared
+import PeripheryShared
 
 /// Retains properties of discrete conforming declarations that directly, or indirectly conform to `Encodable`.
 ///

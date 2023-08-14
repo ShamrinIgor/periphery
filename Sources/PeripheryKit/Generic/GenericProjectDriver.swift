@@ -1,9 +1,9 @@
 import Foundation
 import SystemPackage
-import Shared
+import PeripheryShared
 
 public final class GenericProjectDriver {
-    public static func build() throws -> Self {
+    public static func build(currentDir: URL?) throws -> Self {
         let configuration = Configuration.shared
         let decoder = JSONDecoder()
         decoder.keyDecodingStrategy = .convertFromSnakeCase

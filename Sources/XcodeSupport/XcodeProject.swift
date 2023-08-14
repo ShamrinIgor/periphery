@@ -2,7 +2,7 @@ import Foundation
 import XcodeProj
 import SystemPackage
 import PeripheryKit
-import Shared
+import PeripheryShared
 
 final class XcodeProject: XcodeProjectlike {
     private static var cache: [FilePath: XcodeProject] = [:]

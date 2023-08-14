@@ -1,11 +1,11 @@
 import Foundation
 import SystemPackage
-import Shared
+import PeripheryShared
 
 public final class SPMProjectDriver {
-    public static func build() throws -> Self {
+    public static func build(currentDir: URL?) throws -> Self {
         let configuration = Configuration.shared
-        let package = try SPM.Package.load()
+        let package = try SPM.Package.load(currentDir: currentDir)
         let targets: [SPM.Target]
 
         if !configuration.schemes.isEmpty {
