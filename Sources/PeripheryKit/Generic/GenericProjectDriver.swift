@@ -3,7 +3,7 @@ import SystemPackage
 import PeripheryShared
 
 public final class GenericProjectDriver {
-    public static func build(currentDir: URL?) throws -> Self {
+    public static func build() throws -> Self {
         let configuration = Configuration.shared
         let decoder = JSONDecoder()
         decoder.keyDecodingStrategy = .convertFromSnakeCase
