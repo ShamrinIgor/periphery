@@ -28,7 +28,11 @@ public final class SPMProjectDriver {
         }
         
         if !includeTests {
-            targets = targets.filter{ !$0.isTestTarget }
+            targets = targets.filter { !$0.isTestTarget }
+        }
+        
+        if !configuration.targetsExclude.isEmpty {
+            targets = targets.filter { !configuration.targetsExclude.contains($0.name) }
         }
 
         return self.init(package: package, targets: targets, configuration: configuration, logger: .init())
