@@ -1,5 +1,5 @@
 import Foundation
-import Shared
+import PeripheryShared
 
 public final class SourceGraphMutatorRunner {
     public static func perform(graph: SourceGraph) throws {

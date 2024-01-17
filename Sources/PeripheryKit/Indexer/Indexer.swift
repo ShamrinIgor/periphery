@@ -1,6 +1,6 @@
 import Foundation
 import SystemPackage
-import Shared
+import PeripheryShared
 import FilenameMatcher
 
 public class Indexer {

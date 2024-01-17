@@ -1,5 +1,5 @@
 import Foundation
-import Shared
+import PeripheryShared
 
 #if canImport(FoundationNetworking)
 import FoundationNetworking

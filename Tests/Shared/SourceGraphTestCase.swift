@@ -1,7 +1,7 @@
 import XCTest
 import SystemPackage
 @testable import PeripheryKit
-import Shared
+import PeripheryShared
 
 open class SourceGraphTestCase: XCTestCase {
     static var driver: ProjectDriver!

@@ -1,12 +1,16 @@
 import Foundation
 import SystemPackage
-import Shared
+import PeripheryShared
 
 public final class SPMProjectDriver {
     public static func build() throws -> Self {
+        try build(currentDir: nil, includeTests: true)
+    }
+    
+    public static func build(currentDir: URL?, includeTests: Bool = true) throws -> Self {
         let configuration = Configuration.shared
-        let package = try SPM.Package.load()
-        let targets: [SPM.Target]
+        let package = try SPM.Package.load(currentDir: currentDir)
+        var targets: [SPM.Target]
 
         if !configuration.schemes.isEmpty {
             throw PeripheryError.usageError("The --schemes option has no effect with Swift Package Manager projects.")
@@ -22,10 +26,18 @@ public final class SPMProjectDriver {
                 throw PeripheryError.invalidTargets(names: invalidTargetNames.sorted(), project: SPM.packageFile)
             }
         }
+        
+        if !includeTests {
+            targets = targets.filter { !$0.isTestTarget }
+        }
+        
+        if !configuration.targetsExclude.isEmpty {
+            targets = targets.filter { !configuration.targetsExclude.contains($0.name) }
+        }
 
         return self.init(package: package, targets: targets, configuration: configuration, logger: .init())
     }
-
+    
     private let package: SPM.Package
     let targets: [SPM.Target]
     private let configuration: Configuration

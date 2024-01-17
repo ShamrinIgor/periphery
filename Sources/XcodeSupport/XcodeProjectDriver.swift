@@ -1,7 +1,7 @@
 import Foundation
 import SystemPackage
 import PeripheryKit
-import Shared
+import PeripheryShared
 
 public final class XcodeProjectDriver {
     public static func build() throws -> Self {

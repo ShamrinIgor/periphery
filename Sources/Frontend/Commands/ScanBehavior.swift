@@ -1,6 +1,6 @@
 import Foundation
 import SystemPackage
-import Shared
+import PeripheryShared
 import PeripheryKit
 
 final class ScanBehavior {

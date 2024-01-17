@@ -1,5 +1,5 @@
 import Foundation
-import Shared
+import PeripheryShared
 
 public final class SourceGraph {
     // Global shared instance to prevent costly deinitialization.

@@ -1,5 +1,5 @@
 import Foundation
-import Shared
+import PeripheryShared
 
 /// Retains all constructors on types instantiated via `Self(...)` to workaround false positives caused by a bug in Swift.
 /// https://github.com/apple/swift/issues/64686

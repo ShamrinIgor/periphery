@@ -1,5 +1,5 @@
 import Foundation
-import Shared
+import PeripheryShared
 
 final class CommonSetupGuide: SetupGuideHelpers, SetupGuide {
     private let configuration: Configuration

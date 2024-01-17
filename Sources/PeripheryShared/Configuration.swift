@@ -28,6 +28,9 @@ public final class Configuration {
 
     @Setting(key: "targets", defaultValue: [])
     public var targets: [String]
+    
+    @Setting(key: "targetsExclude", defaultValue: [])
+    public var targetsExclude: [String]
 
     @Setting(key: "index_exclude", defaultValue: [])
     public var indexExclude: [String]
@@ -134,6 +137,10 @@ public final class Configuration {
 
         if $targets.hasNonDefaultValue {
             config[$targets.key] = targets
+        }
+
+        if $targetsExclude.hasNonDefaultValue {
+            config[$targetsExclude.key] = targetsExclude
         }
 
         if $outputFormat.hasNonDefaultValue {
@@ -270,6 +277,8 @@ public final class Configuration {
                 $schemes.assign(value)
             case $targets.key:
                 $targets.assign(value)
+            case $targetsExclude.key:
+                $targetsExclude.assign(value)
             case $indexExclude.key:
                 $indexExclude.assign(value)
             case $reportExclude.key:

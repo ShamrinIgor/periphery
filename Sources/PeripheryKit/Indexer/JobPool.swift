@@ -1,5 +1,5 @@
 import Foundation
-import Shared
+import PeripheryShared
 
 struct JobPool<T> {
     let jobs: [T]

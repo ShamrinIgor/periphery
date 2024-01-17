@@ -1,6 +1,6 @@
 import Foundation
 import SystemPackage
-import Shared
+import PeripheryShared
 
 public struct SPM {
     static let packageFile = "Package.swift"
@@ -10,9 +10,13 @@ public struct SPM {
     }
 
     public struct Package: Decodable {
-        public static func load() throws -> Self {
+        public static func load(currentDir: URL? = nil) throws -> Self {
             Logger().contextualized(with: "spm:package").debug("Loading \(FilePath.current)")
-            let jsonString = try Shell.shared.exec(["swift", "package", "describe", "--type", "json"], stderr: false)
+            let jsonString = try Shell.shared.exec(
+                ["swift", "package", "describe", "--type", "json"],
+                stderr: false,
+                currentDir: currentDir
+            )
 
             guard let jsonData = jsonString.data(using: .utf8) else {
                 throw PeripheryError.packageError(message: "Failed to read swift package description.")

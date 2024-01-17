@@ -1,5 +1,5 @@
 import Foundation
-import Shared
+import PeripheryShared
 import SystemPackage
 
 public protocol OutputFormatter: AnyObject {

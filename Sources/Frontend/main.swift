@@ -1,6 +1,6 @@
 import Foundation
 import ArgumentParser
-import Shared
+import PeripheryShared
 
 Logger.configureBuffering()
 

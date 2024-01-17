@@ -1,7 +1,7 @@
 import Foundation
 import SystemPackage
 import PeripheryKit
-import Shared
+import PeripheryShared
 
 final class SPMProjectSetupGuide: SetupGuideHelpers, ProjectSetupGuide {
     private let configuration: Configuration

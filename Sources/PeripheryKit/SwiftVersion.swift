@@ -1,5 +1,5 @@
 import Foundation
-import Shared
+import PeripheryShared
 
 public struct SwiftVersion {
     public static let current = SwiftVersion()

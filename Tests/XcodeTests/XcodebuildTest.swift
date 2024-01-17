@@ -1,6 +1,6 @@
 import Foundation
 import XCTest
-import Shared
+import PeripheryShared
 @testable import XcodeSupport
 
 class XcodebuildBuildProjectTest: XCTestCase {
@@ -49,7 +49,7 @@ class ShellMock: Shell {
         self.init(environment: ProcessInfo.processInfo.environment, logger: Logger())
     }
 
-    override func exec(_ args: [String], stderr: Bool = true) throws -> String {
+    override func exec(_ args: [String], stderr: Bool = true, currentDir: URL? = nil) throws -> String {
         return output
     }
 }

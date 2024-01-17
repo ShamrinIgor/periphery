@@ -1,5 +1,5 @@
 import Foundation
-import Shared
+import PeripheryShared
 
 /// Builds a reference from a `Codable` conforming type to any child enum that conforms to `CodingKey`.
 final class CodingKeyEnumReferenceBuilder: SourceGraphMutator {

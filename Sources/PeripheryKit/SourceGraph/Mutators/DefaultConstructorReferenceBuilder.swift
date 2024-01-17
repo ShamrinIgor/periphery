@@ -1,5 +1,5 @@
 import Foundation
-import Shared
+import PeripheryShared
 
 final class DefaultConstructorReferenceBuilder: SourceGraphMutator {
     private let graph: SourceGraph

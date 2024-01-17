@@ -1,7 +1,7 @@
 import Foundation
 import SystemPackage
 import PeripheryKit
-import Shared
+import PeripheryShared
 
 #if canImport(XcodeSupport)
 import XcodeSupport

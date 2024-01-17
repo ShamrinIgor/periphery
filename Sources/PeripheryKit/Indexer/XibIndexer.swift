@@ -1,4 +1,4 @@
-import Shared
+import PeripheryShared
 import SystemPackage
 
 public final class XibIndexer: Indexer {

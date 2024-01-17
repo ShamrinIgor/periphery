@@ -21,7 +21,7 @@ dependencies.append(
 #endif
 
 var frontendDependencies: [PackageDescription.Target.Dependency] = [
-    .target(name: "Shared"),
+    .target(name: "PeripheryShared"),
     .target(name: "PeripheryKit"),
     .product(name: "ArgumentParser", package: "swift-argument-parser"),
     .product(name: "FilenameMatcher", package: "swift-filename-matcher")
@@ -39,7 +39,7 @@ var targets: [PackageDescription.Target] = [
     .target(
         name: "PeripheryKit",
         dependencies: [
-            .target(name: "Shared"),
+            .target(name: "PeripheryShared"),
             .product(name: "SystemPackage", package: "swift-system"),
             .product(name: "AEXML", package: "AEXML"),
             .product(name: "SwiftSyntax", package: "swift-syntax"),
@@ -49,7 +49,7 @@ var targets: [PackageDescription.Target] = [
         ]
     ),
     .target(
-        name: "Shared",
+        name: "PeripheryShared",
         dependencies: [
             .product(name: "Yams", package: "Yams"),
             .product(name: "SystemPackage", package: "swift-system"),
@@ -130,7 +130,7 @@ targets.append(contentsOf: [
     .target(
         name: "XcodeSupport",
         dependencies: [
-            .target(name: "Shared"),
+            .target(name: "PeripheryShared"),
             .target(name: "PeripheryKit"),
             .product(name: "XcodeProj", package: "XcodeProj"),
         ]
@@ -159,7 +159,7 @@ let package = Package(
     name: "Periphery",
     platforms: [.macOS(.v13)],
     products: [
-        .executable(name: "periphery", targets: ["Frontend"]),
+        .library(name: "Periphery", targets: ["PeripheryKit", "PeripheryShared"])
     ],
     dependencies: dependencies,
     targets: targets,
