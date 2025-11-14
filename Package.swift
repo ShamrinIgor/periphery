@@ -68,6 +68,7 @@ var targets: [PackageDescription.Target] = [
             .target(name: "SourceGraph"),
             .target(name: "Shared"),
             .target(name: "Indexer"),
+            .target(name: "Logger"),
             .product(name: "SystemPackage", package: "swift-system"),
             .product(name: "AEXML", package: "AEXML"),
             .product(name: "SwiftSyntax", package: "swift-syntax"),
@@ -179,6 +180,10 @@ let package = Package(
     products: [
         .executable(name: "periphery", targets: ["Frontend"]),
         .library(name: "PeripheryKit", targets: ["PeripheryKit"]),
+        .library(name: "SourceGraph", targets: ["SourceGraph"]),
+        .library(name: "Configuration", targets: ["Configuration"]),
+        .library(name: "ProjectDrivers", targets: ["ProjectDrivers"]),
+        .library(name: "Logger", targets: ["Logger"]),
     ],
     dependencies: dependencies,
     targets: targets,

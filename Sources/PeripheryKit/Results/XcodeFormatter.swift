@@ -4,15 +4,15 @@ import Logger
 import SourceGraph
 import SystemPackage
 
-final class XcodeFormatter: OutputFormatter {
-    let configuration: Configuration
-    lazy var currentFilePath: FilePath = .current
+public final class XcodeFormatter: OutputFormatter {
+    public let configuration: Configuration
+    public lazy var currentFilePath: FilePath = .current
 
-    init(configuration: Configuration) {
+    public init(configuration: Configuration) {
         self.configuration = configuration
     }
 
-    func format(_ results: [ScanResult], colored: Bool) throws -> String? {
+    public func format(_ results: [ScanResult], colored: Bool) throws -> String? {
         guard !results.isEmpty else {
             return colorize("* ", .boldGreen, colored: colored) + colorize("No unused code detected.", .bold, colored: colored)
         }
